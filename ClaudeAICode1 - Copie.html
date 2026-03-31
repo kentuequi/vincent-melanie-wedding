@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mélanie & Vincent — Mariage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Upright:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a2744;
+    --navy-light: #243258;
+    --navy-mid: #2e3f6a;
+    --terra: #c4714a;
+    --terra-light: #d8896a;
+    --terra-pale: #f0d5c8;
+    --cream: #faf6f1;
+    --cream-dark: #f2ebe0;
+    --gold: #b8936a;
+    --text-dark: #1a2744;
+    --text-mid: #4a5568;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--text-dark);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ===== HERO ===== */
+  .hero {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 60px 20px;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 80% 60% at 50% 110%, rgba(196,113,74,0.18) 0%, transparent 60%),
+      radial-gradient(ellipse 60% 40% at 80% 20%, rgba(196,113,74,0.08) 0%, transparent 50%);
+  }
+
+  .hero-ornament {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0; left: 0;
+    pointer-events: none;
+  }
+
+  /* Decorative corners */
+  .corner {
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    opacity: 0.3;
+  }
+  .corner svg { width: 100%; height: 100%; }
+  .corner-tl { top: 24px; left: 24px; }
+  .corner-tr { top: 24px; right: 24px; transform: scaleX(-1); }
+  .corner-bl { bottom: 24px; left: 24px; transform: scaleY(-1); }
+  .corner-br { bottom: 24px; right: 24px; transform: scale(-1); }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    animation: fadeUp 1.2s ease both;
+  }
+
+  .pre-title {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1rem;
+    letter-spacing: 0.35em;
+    text-transform: uppercase;
+    color: var(--terra-light);
+    margin-bottom: 28px;
+    font-style: italic;
+  }
+
+  .names {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(4.5rem, 12vw, 9rem);
+    color: #fff;
+    line-height: 1;
+    margin-bottom: 12px;
+    text-shadow: 0 4px 32px rgba(196,113,74,0.25);
+  }
+
+  .names span {
+    display: inline-block;
+    color: var(--terra-light);
+  }
+
+  .ampersand {
+    color: var(--terra);
+    margin: 0 12px;
+  }
+
+  .date-line {
+    font-family: 'Cormorant Upright', serif;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+    color: rgba(255,255,255,0.75);
+    letter-spacing: 0.15em;
+    margin: 28px 0 14px;
+  }
+
+  .location-line {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 56px;
+  }
+
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    margin: 0 auto 48px;
+    width: 280px;
+  }
+  .divider-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, transparent, rgba(196,113,74,0.6));
+  }
+  .divider-line:last-child {
+    background: linear-gradient(to left, transparent, rgba(196,113,74,0.6));
+  }
+  .divider-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--terra);
+  }
+
+  .scroll-cta {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.5);
+    font-size: 0.72rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.3s;
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+  .scroll-cta:hover { color: var(--terra-light); }
+  .scroll-arrow {
+    width: 32px; height: 32px;
+    border: 1px solid currentColor;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    animation: bounce 2s infinite;
+  }
+
+  /* ===== DETAILS SECTION ===== */
+  .details-section {
+    background: var(--cream-dark);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .details-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--terra), var(--navy), var(--terra), transparent);
+  }
+
+  .section-label {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--terra);
+    margin-bottom: 20px;
+  }
+
+  .section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    color: var(--navy);
+    margin-bottom: 48px;
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 32px;
+    max-width: 860px;
+    margin: 0 auto 64px;
+  }
+
+  .detail-card {
+    background: #fff;
+    border-radius: 2px;
+    padding: 36px 28px;
+    border-bottom: 3px solid var(--terra);
+    box-shadow: 0 2px 24px rgba(26,39,68,0.07);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .detail-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 40px rgba(26,39,68,0.12);
+  }
+
+  .detail-icon {
+    font-size: 2rem;
+    margin-bottom: 14px;
+  }
+
+  .detail-card-title {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1.25rem;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    margin-bottom: 10px;
+  }
+
+  .detail-card-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--text-mid);
+  }
+  .detail-card-text strong {
+    display: block;
+    color: var(--navy);
+    font-weight: 500;
+    font-size: 0.92rem;
+  }
+
+  /* ===== MESSAGE SECTION ===== */
+  .message-section {
+    background: var(--navy);
+    padding: 80px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .message-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 70% 50% at 50% 50%, rgba(196,113,74,0.1) 0%, transparent 70%);
+  }
+
+  .message-body {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .message-section .section-label { color: var(--terra-light); }
+  .message-section .section-title { color: #fff; }
+
+  .message-text {
+    font-family: 'Cormorant Upright', serif;
+    font-size: clamp(1.05rem, 2.2vw, 1.3rem);
+    color: rgba(255,255,255,0.8);
+    line-height: 1.9;
+    font-style: italic;
+    margin-bottom: 48px;
+  }
+
+  .signature {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.8rem;
+    color: var(--terra-light);
+  }
+
+  /* ===== RSVP SECTION ===== */
+  .rsvp-section {
+    background: var(--cream);
+    padding: 80px 20px 100px;
+    position: relative;
+  }
+  .rsvp-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(to right, transparent, var(--navy), var(--terra), var(--navy), transparent);
+  }
+
+  .rsvp-inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .rsvp-inner .section-title { color: var(--navy); margin-bottom: 12px; }
+
+  .rsvp-subtitle {
+    font-family: 'Cormorant Upright', serif;
+    font-size: 1rem;
+    color: var(--text-mid);
+    font-style: italic;
+    margin-bottom: 48px;
+  }
+
+  /* Form */
+  .form-group {
+    text-align: left;
+    margin-bottom: 24px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--navy);
+    margin-bottom: 8px;
+    font-weight: 500;
+  }
+
+  .form-input, .form-select, .form-textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1.5px solid rgba(26,39,68,0.18);
+    border-radius: 2px;
+    background: #fff;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.92rem;
+    color: var(--text-dark);
+    transition: border-color 0.25s, box-shadow 0.25s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+
+  .form-input:focus, .form-select:focus, .form-textarea:focus {
+    border-color: var(--terra);
+    box-shadow: 0 0 0 3px rgba(196,113,74,0.12);
+  }
+
+  .form-select {
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='8' viewBox='0 0 14 8'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%231a2744' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 44px;
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+
+  /* Presence toggle */
+  .presence-toggle {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .toggle-option {
+    position: relative;
+  }
+
+  .toggle-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+
+  .toggle-label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px;
+    border: 1.5px solid rgba(26,39,68,0.18);
+    border-radius: 2px;
+    cursor: pointer;
+    font-size: 0.88rem;
+    transition: all 0.25s;
+    background: #fff;
+  }
+
+  .toggle-option input:checked + .toggle-label {
+    background: var(--navy);
+    border-color: var(--navy);
+    color: #fff;
+  }
+
+  .toggle-option.yes input:checked + .toggle-label {
+    background: var(--navy);
+    border-color: var(--navy);
+  }
+
+  .toggle-option.no input:checked + .toggle-label {
+    background: var(--terra);
+    border-color: var(--terra);
+    color: #fff;
+  }
+
+  .toggle-label:hover {
+    border-color: var(--navy);
+    background: rgba(26,39,68,0.04);
+  }
+
+  /* Guests counter */
+  .guests-counter {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    border: 1.5px solid rgba(26,39,68,0.18);
+    border-radius: 2px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .counter-btn {
+    width: 48px;
+    height: 48px;
+    border: none;
+    background: none;
+    font-size: 1.3rem;
+    cursor: pointer;
+    color: var(--navy);
+    transition: background 0.2s, color 0.2s;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .counter-btn:hover { background: var(--navy); color: #fff; }
+
+  .counter-value {
+    flex: 1;
+    text-align: center;
+    font-size: 1.1rem;
+    font-family: 'Cormorant Upright', serif;
+    color: var(--navy);
+    border: none;
+    border-left: 1.5px solid rgba(26,39,68,0.12);
+    border-right: 1.5px solid rgba(26,39,68,0.12);
+    padding: 0 10px;
+    height: 48px;
+    background: #fff;
+    outline: none;
+    pointer-events: none;
+  }
+
+  /* Guests details */
+  #guests-details {
+    display: none;
+    animation: fadeUp 0.4s ease both;
+  }
+  #guests-details.visible { display: block; }
+
+  /* Dietary */
+  .checkbox-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .checkbox-option {
+    position: relative;
+  }
+  .checkbox-option input {
+    position: absolute;
+    opacity: 0;
+    width: 0; height: 0;
+  }
+  .checkbox-label {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1.5px solid rgba(26,39,68,0.18);
+    border-radius: 30px;
+    font-size: 0.82rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: #fff;
+  }
+  .checkbox-option input:checked + .checkbox-label {
+    background: var(--terra-pale);
+    border-color: var(--terra);
+    color: var(--navy);
+  }
+
+  /* Submit */
+  .submit-btn {
+    width: 100%;
+    padding: 18px;
+    background: var(--navy);
+    color: #fff;
+    border: none;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.3s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.08), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.5s;
+  }
+  .submit-btn:hover { background: var(--terra); }
+  .submit-btn:hover::after { transform: translateX(100%); }
+  .submit-btn:active { transform: scale(0.99); }
+
+  /* Success */
+  .success-message {
+    display: none;
+    text-align: center;
+    padding: 60px 20px;
+    animation: fadeUp 0.6s ease both;
+  }
+  .success-message.visible { display: block; }
+  .success-icon { font-size: 3rem; margin-bottom: 24px; }
+  .success-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--navy);
+    margin-bottom: 16px;
+  }
+  .success-text {
+    font-family: 'Cormorant Upright', serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: var(--text-mid);
+    line-height: 1.7;
+  }
+
+  /* Absence message */
+  #absence-block {
+    display: none;
+    animation: fadeUp 0.4s ease both;
+  }
+  #absence-block.visible { display: block; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--navy);
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .footer-names {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2.2rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 10px;
+  }
+
+  .footer-date {
+    font-size: 0.75rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .footer-line {
+    width: 60px;
+    height: 1px;
+    background: var(--terra);
+    margin: 20px auto;
+  }
+
+  /* ===== ANIMATIONS ===== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 540px) {
+    .corner { width: 70px; height: 70px; }
+    .names { font-size: 4rem; }
+    .details-grid { grid-template-columns: 1fr; }
+  }
+
+  /* Fade-in on scroll */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible-anim {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="top">
+
+  <!-- Decorative corners -->
+  <div class="corner corner-tl">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 60 Q10 10 60 10 Z" stroke="#c4714a" stroke-width="1" fill="none"/>
+      <path d="M20 10 Q60 10 60 50" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <path d="M10 20 Q10 60 50 60" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#c4714a"/>
+      <circle cx="60" cy="10" r="1.5" fill="#c4714a" opacity="0.5"/>
+      <circle cx="10" cy="60" r="1.5" fill="#c4714a" opacity="0.5"/>
+      <path d="M30 10 L10 10 L10 30" stroke="#c4714a" stroke-width="0.5" fill="none" opacity="0.4"/>
+    </svg>
+  </div>
+  <div class="corner corner-tr">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 60 Q10 10 60 10 Z" stroke="#c4714a" stroke-width="1" fill="none"/>
+      <path d="M20 10 Q60 10 60 50" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <path d="M10 20 Q10 60 50 60" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#c4714a"/>
+      <circle cx="60" cy="10" r="1.5" fill="#c4714a" opacity="0.5"/>
+      <circle cx="10" cy="60" r="1.5" fill="#c4714a" opacity="0.5"/>
+    </svg>
+  </div>
+  <div class="corner corner-bl">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 60 Q10 10 60 10 Z" stroke="#c4714a" stroke-width="1" fill="none"/>
+      <path d="M20 10 Q60 10 60 50" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <path d="M10 20 Q10 60 50 60" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#c4714a"/>
+    </svg>
+  </div>
+  <div class="corner corner-br">
+    <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 10 L10 60 Q10 10 60 10 Z" stroke="#c4714a" stroke-width="1" fill="none"/>
+      <path d="M20 10 Q60 10 60 50" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <path d="M10 20 Q10 60 50 60" stroke="#c4714a" stroke-width="0.7" fill="none"/>
+      <circle cx="10" cy="10" r="3" fill="#c4714a"/>
+    </svg>
+  </div>
+
+  <div class="hero-content">
+    <p class="pre-title">Nous avons l'honneur de vous convier à notre mariage</p>
+
+    <div class="names">
+      <span>Mélanie</span>
+      <span class="ampersand">&amp;</span>
+      <span>Vincent</span>
+    </div>
+
+    <div class="divider">
+      <div class="divider-line"></div>
+      <div class="divider-dot"></div>
+      <div class="divider-line"></div>
+    </div>
+
+    <p class="date-line">Le Samedi 14 Juin 2025</p>
+    <p class="location-line">Château de Valmirande · Samatan, Gers</p>
+
+    <button class="scroll-cta" onclick="document.getElementById('details').scrollIntoView({behavior:'smooth'})">
+      <span>Découvrir</span>
+      <div class="scroll-arrow">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+    </button>
+  </div>
+</section>
+
+<!-- ===== DETAILS ===== -->
+<section class="details-section" id="details">
+  <p class="section-label fade-in">Le Programme</p>
+  <h2 class="section-title fade-in">Les détails du jour</h2>
+
+  <div class="details-grid">
+    <div class="detail-card fade-in">
+      <div class="detail-icon">💍</div>
+      <h3 class="detail-card-title">Cérémonie</h3>
+      <p class="detail-card-text">
+        <strong>14h00</strong>
+        Église Saint-Pierre<br>
+        Place du Village<br>
+        32130 Samatan
+      </p>
+    </div>
+    <div class="detail-card fade-in">
+      <div class="detail-icon">🥂</div>
+      <h3 class="detail-card-title">Cocktail</h3>
+      <p class="detail-card-text">
+        <strong>16h30</strong>
+        Château de Valmirande<br>
+        Jardins & terrasses<br>
+        Tenue : cocktail chic
+      </p>
+    </div>
+    <div class="detail-card fade-in">
+      <div class="detail-icon">🕯️</div>
+      <h3 class="detail-card-title">Dîner & Soirée</h3>
+      <p class="detail-card-text">
+        <strong>19h30</strong>
+        Grande salle du Château<br>
+        Dîner dansant<br>
+        Jusqu'au bout de la nuit
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MESSAGE ===== -->
+<section class="message-section">
+  <div class="message-body fade-in">
+    <p class="section-label">Un mot du cœur</p>
+    <h2 class="section-title">Notre invitation</h2>
+
+    <p class="message-text">
+      Après des années de bonheur partagé, nous avons choisi de célébrer notre amour entourés des personnes qui nous sont les plus chères.<br><br>
+      Nous serions infiniment touchés que vous puissiez être présents à nos côtés pour ce jour inoubliable. Votre présence sera le plus beau des cadeaux.
+    </p>
+
+    <p class="signature">Mélanie &amp; Vincent</p>
+  </div>
+</section>
+
+<!-- ===== RSVP ===== -->
+<section class="rsvp-section" id="rsvp">
+  <div class="rsvp-inner">
+    <p class="section-label fade-in">Répondez avant le 15 Avril 2025</p>
+    <h2 class="section-title fade-in">Confirmer votre présence</h2>
+    <p class="rsvp-subtitle fade-in">Nous attendons votre réponse avec impatience</p>
+
+    <!-- FORM -->
+    <div id="rsvp-form" class="fade-in">
+
+      <!-- Prénom / Nom -->
+      <div class="form-group">
+        <label class="form-label" for="fullname">Votre nom complet</label>
+        <input class="form-input" type="text" id="fullname" placeholder="Prénom et Nom" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label class="form-label" for="email">Votre adresse e-mail</label>
+        <input class="form-input" type="email" id="email" placeholder="vous@exemple.com">
+      </div>
+
+      <!-- Présence -->
+      <div class="form-group">
+        <label class="form-label">Serez-vous présent(e) ?</label>
+        <div class="presence-toggle">
+          <div class="toggle-option yes">
+            <input type="radio" name="presence" id="pres-yes" value="yes" onchange="handlePresence(this)">
+            <label class="toggle-label" for="pres-yes">
+              <span>✓</span> Avec joie !
+            </label>
+          </div>
+          <div class="toggle-option no">
+            <input type="radio" name="presence" id="pres-no" value="no" onchange="handlePresence(this)">
+            <label class="toggle-label" for="pres-no">
+              <span>✗</span> Je ne pourrai pas
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Si présent -->
+      <div id="presence-block">
+
+        <!-- Nombre de personnes -->
+        <div class="form-group">
+          <label class="form-label">Nombre de personnes (vous inclus)</label>
+          <div class="guests-counter">
+            <button type="button" class="counter-btn" onclick="changeCount(-1)">−</button>
+            <div class="counter-value" id="counter-display">1</div>
+            <button type="button" class="counter-btn" onclick="changeCount(1)">+</button>
+          </div>
+        </div>
+
+        <!-- Détails invités supplémentaires -->
+        <div id="guests-details">
+          <div class="form-group">
+            <label class="form-label">Noms des personnes vous accompagnant</label>
+            <textarea class="form-textarea" id="guest-names" placeholder="Ex : Marie Dupont, Jean Dupont…" style="min-height:80px;"></textarea>
+          </div>
+        </div>
+
+        <!-- Participe aux festivités -->
+        <div class="form-group">
+          <label class="form-label">Vous souhaitez participer à</label>
+          <div class="checkbox-group">
+            <div class="checkbox-option">
+              <input type="checkbox" id="cer" checked>
+              <label class="checkbox-label" for="cer">🕍 Cérémonie</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="coc" checked>
+              <label class="checkbox-label" for="coc">🥂 Cocktail</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="din" checked>
+              <label class="checkbox-label" for="din">🍽️ Dîner & Soirée</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Régime alimentaire -->
+        <div class="form-group">
+          <label class="form-label">Régime alimentaire</label>
+          <div class="checkbox-group">
+            <div class="checkbox-option">
+              <input type="checkbox" id="veg">
+              <label class="checkbox-label" for="veg">🥗 Végétarien</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="vegan">
+              <label class="checkbox-label" for="vegan">🌱 Vegan</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="gf">
+              <label class="checkbox-label" for="gf">🌾 Sans gluten</label>
+            </div>
+            <div class="checkbox-option">
+              <input type="checkbox" id="allerg">
+              <label class="checkbox-label" for="allerg">⚠️ Allergie(s)</label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Message -->
+        <div class="form-group">
+          <label class="form-label">Un message pour les mariés (optionnel)</label>
+          <textarea class="form-textarea" id="message" placeholder="Partagez vos mots doux…"></textarea>
+        </div>
+
+      </div>
+
+      <!-- Si absent -->
+      <div id="absence-block">
+        <div class="form-group">
+          <label class="form-label">Un mot pour les mariés</label>
+          <textarea class="form-textarea" id="absence-message" placeholder="Partagez vos voeux et vos pensées…"></textarea>
+        </div>
+      </div>
+
+      <button class="submit-btn" onclick="submitForm()">
+        Envoyer ma réponse
+      </button>
+    </div>
+
+    <!-- SUCCESS -->
+    <div class="success-message" id="success-msg">
+      <div class="success-icon">💌</div>
+      <h3 class="success-title" id="success-title">Merci !</h3>
+      <p class="success-text" id="success-text">Nous avons bien reçu votre réponse.<br>Nous vous attendons avec impatience !</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p class="footer-names">Mélanie &amp; Vincent</p>
+  <div class="footer-line"></div>
+  <p class="footer-date">14 Juin 2025 · Château de Valmirande · Samatan</p>
+</footer>
+
+<script>
+  // Presence toggle
+  let guestCount = 1;
+
+  function handlePresence(radio) {
+    const presBlock = document.getElementById('presence-block');
+    const absBlock = document.getElementById('absence-block');
+
+    if (radio.value === 'yes') {
+      presBlock.style.display = 'block';
+      absBlock.classList.remove('visible');
+    } else {
+      presBlock.style.display = 'none';
+      absBlock.classList.add('visible');
+    }
+  }
+
+  // Counter
+  function changeCount(delta) {
+    guestCount = Math.max(1, Math.min(10, guestCount + delta));
+    document.getElementById('counter-display').textContent = guestCount;
+
+    const detailsEl = document.getElementById('guests-details');
+    if (guestCount > 1) {
+      detailsEl.classList.add('visible');
+    } else {
+      detailsEl.classList.remove('visible');
+    }
+  }
+
+  // Submit
+  function submitForm() {
+    const name = document.getElementById('fullname').value.trim();
+    const presence = document.querySelector('input[name="presence"]:checked');
+
+    if (!name) {
+      document.getElementById('fullname').focus();
+      document.getElementById('fullname').style.borderColor = '#c0392b';
+      setTimeout(() => document.getElementById('fullname').style.borderColor = '', 2000);
+      return;
+    }
+
+    if (!presence) {
+      alert('Merci d\'indiquer si vous serez présent(e).');
+      return;
+    }
+
+    const isPresent = presence.value === 'yes';
+
+    document.getElementById('rsvp-form').style.display = 'none';
+    const successEl = document.getElementById('success-msg');
+    successEl.classList.add('visible');
+
+    const firstName = name.split(' ')[0];
+
+    if (isPresent) {
+      document.getElementById('success-title').textContent = `À bientôt, ${firstName} !`;
+      document.getElementById('success-text').innerHTML = `Nous sommes ravis de vous compter parmi nous.<br>Nous avons hâte de célébrer avec vous !<br><br><em style="font-family:'Cormorant Upright',serif;color:#c4714a;">Mélanie &amp; Vincent</em>`;
+    } else {
+      document.getElementById('success-title').textContent = `Merci, ${firstName}`;
+      document.getElementById('success-text').innerHTML = `Nous sommes touchés de votre réponse.<br>Vous serez dans nos pensées en ce beau jour.<br><br><em style="font-family:'Cormorant Upright',serif;color:#c4714a;">Mélanie &amp; Vincent</em>`;
+    }
+  }
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible-anim');
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Init presence block hidden
+  document.getElementById('presence-block').style.display = 'none';
+</script>
+</body>
+</html>
