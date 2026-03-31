@@ -1,51 +1,48 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Annonce de Mariage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f3f3f3;
-            color: #333;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            color: #4A4A4A;
         }
         h1, h2 {
-            color: #2c3e50;
+            font-family: 'Great Vibes', cursive;
+            color: navy;
         }
-        .rsvp {
-            background-color: navy;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
+        .highlight {
+            color: terra-cotta;
+        }
+        .rsvp-form {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
         }
     </style>
+    <title>Wedding Announcement</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Annonce de Mariage</h1>
-        <h2>Vincent & Mélanie</h2>
-        <p>Nous avons le plaisir de vous annoncer la célébration de notre mariage, après 18 années de amour et de bonheur partagé.</p>
-        <p>La cérémonie aura lieu à l'Église d'Urzy Bourg.</p>
-        <p>La réception se tiendra au Château des Bordes à Urzy dans la magnifique région de Bourgogne.</p>
-        <h2>RSVP</h2>
-        <p>Veuillez confirmer votre présence en remplissant le formulaire ci-dessous :</p>
-        <form class="rsvp">
-            <label for="name">Nom:</label><br>
-            <input type="text" id="name" name="name" required><br>
-            <label for="number">Nombre de personnes:</label><br>
-            <input type="number" id="number" name="number" min="1" required><br><br>
-            <input type="submit" value="Soumettre">
+    <h1>Join Us for a Celebration Full of Great Vibes!</h1>
+    <p>We’re tying the knot! After 18 years of laughter and love, we’re excited to announce our wedding on the 15th of July, 2026.</p>
+    <h2>Ceremony Details</h2>
+    <p>Location: Église d'Urzy Bourg</p>
+    <p>Time: 3:00 PM</p>
+    <h2>Reception Details</h2>
+    <p>Join us at the stunning Château des Bordes for celebration, food, and fun!</p>
+    <h2>RSVP</h2>
+    <p>Please fill in the details below:</p>
+    <div class="rsvp-form">
+        <form action="mailto:melyetvince@gmail.com" method="post" enctype="text/plain">
+            <label for="guestName">Guest Name:</label><br>
+            <input type="text" id="guestName" name="guestName" required><br>
+            <label for="numberOfPeople">Number of People:</label><br>
+            <input type="number" id="numberOfPeople" name="numberOfPeople" min="1" required><br><br>
+            <input type="submit" value="Send RSVP">
         </form>
-        <p>Pour plus d'informations, contactez-nous à <a href="mailto:melyetvince@gmail.com">melyetvince@gmail.com</a>.</p>
     </div>
 </body>
 </html>
