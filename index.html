@@ -3,30 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vincent et Melanie - Mariage</title>
+    <title>Annonce de Mariage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #2c3e50;
+        }
+        .rsvp {
+            background-color: navy;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <h1>Bienvenue au mariage de Vincent et Melanie</h1>
-    </header>
-    <main>
-        <section>
-            <h2>Informations</h2>
-            <p>Nous sommes ravis de vous inviter à célébrer notre mariage le 30 juin 2026.</p>
-        </section>
-        <section>
-            <h2>RSVP</h2>
-            <form>
-                <label for="name">Nom:</label>
-                <input type="text" id="name" placeholder="Entrez votre nom" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" placeholder="Entrez votre email" required>
-                <button type="submit">Soumettre</button>
-            </form>
-        </section>
-    </main>
-    <footer>
-        <p>Merci et à bientôt!</p>
-    </footer>
+    <div class="container">
+        <h1>Annonce de Mariage</h1>
+        <h2>Vincent & Mélanie</h2>
+        <p>Nous avons le plaisir de vous annoncer la célébration de notre mariage, après 18 années de amour et de bonheur partagé.</p>
+        <p>La cérémonie aura lieu à l'Église d'Urzy Bourg.</p>
+        <p>La réception se tiendra au Château des Bordes à Urzy dans la magnifique région de Bourgogne.</p>
+        <h2>RSVP</h2>
+        <p>Veuillez confirmer votre présence en remplissant le formulaire ci-dessous :</p>
+        <form class="rsvp">
+            <label for="name">Nom:</label><br>
+            <input type="text" id="name" name="name" required><br>
+            <label for="number">Nombre de personnes:</label><br>
+            <input type="number" id="number" name="number" min="1" required><br><br>
+            <input type="submit" value="Soumettre">
+        </form>
+        <p>Pour plus d'informations, contactez-nous à <a href="mailto:melyetvince@gmail.com">melyetvince@gmail.com</a>.</p>
+    </div>
 </body>
 </html>
