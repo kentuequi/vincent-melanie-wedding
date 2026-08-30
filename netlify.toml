@@ -1,0 +1,5 @@
+# Configuration Netlify pour le site RSVP Mélanie & Vincent
+
+[build]
+  publish = "."
+  functions = "netlify/functions"
